@@ -2,11 +2,13 @@ package com.daniel.raduca.countryflags.adapters
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.daniel.raduca.countryflags.R
+import com.daniel.raduca.countryflags.ui.countries.CountriesApiStatus
 
 /**
  * Sets data list to RecyclerView
@@ -41,6 +43,35 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
         imgView.load(imgUri) {
             placeholder(R.drawable.loading_animation)
             error(R.drawable.ic_stop_sign)
+        }
+    }
+}
+
+@BindingAdapter("apiStatus")
+fun bindStatus(statusImageView: ImageView, status: CountriesApiStatus) {
+    when (status) {
+        CountriesApiStatus.LOADING -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.loading_animation)
+        }
+        CountriesApiStatus.ERROR -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.ic_stop_sign)
+        }
+        CountriesApiStatus.DONE -> {
+            statusImageView.visibility = View.GONE
+        }
+    }
+}
+
+@BindingAdapter("apiErrorMessage")
+fun bindStatus(errorTextView: TextView, status: CountriesApiStatus) {
+    when (status) {
+        CountriesApiStatus.ERROR -> {
+            errorTextView.visibility = View.VISIBLE
+        }
+        else -> {
+            errorTextView.visibility = View.GONE
         }
     }
 }
