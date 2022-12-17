@@ -6,8 +6,10 @@
     <data>
 
         <variable
-            name="country"
+            name="item"
             type="com.daniel.raduca.countryflags.model.Country" />
+
+        <import type="com.daniel.raduca.countryflags.util.UtilKt" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -52,6 +54,7 @@
                     android:includeFontPadding="false"
                     android:paddingHorizontal="4dp"
                     android:paddingTop="4dp"
+                    android:text="@{item.name.common}"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/title_size"
                     tools:text="Italy" />
@@ -64,6 +67,7 @@
                     android:includeFontPadding="false"
                     android:paddingHorizontal="4dp"
                     android:paddingBottom="4dp"
+                    android:text="@{item.name.official}"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/medium_text_size"
                     tools:text="Italian Republic" />
@@ -89,39 +93,54 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:paddingVertical="4dp"
                     android:paddingStart="0dp"
                     android:paddingEnd="4dp">
 
-                    <TextView
-                        android:id="@+id/region"
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="6dp"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/roboto"
-                        android:gravity="center_vertical"
-                        android:includeFontPadding="false"
-                        android:paddingHorizontal="4dp"
-                        android:singleLine="true"
-                        android:textColor="@color/text_color"
-                        android:textSize="@dimen/text_size"
-                        app:drawableStartCompat="@drawable/ic_location_on"
-                        tools:text="Europe" />
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="6dp"
+                        android:src="@drawable/ic_location_on" />
 
-                    <TextView
-                        android:id="@+id/subregion"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/roboto"
-                        android:includeFontPadding="false"
-                        android:paddingHorizontal="4dp"
-                        android:singleLine="true"
-                        android:textColor="@color/text_color"
-                        android:textSize="@dimen/small_text_size"
-                        tools:text="Southern Europe" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/region"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/roboto"
+                            android:gravity="center_vertical"
+                            android:includeFontPadding="false"
+                            android:singleLine="true"
+                            android:text="@{item.region}"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/text_size"
+                            tools:text="Europe" />
+
+                        <TextView
+                            android:id="@+id/subregion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/roboto"
+                            android:includeFontPadding="false"
+                            android:singleLine="true"
+                            android:text="@{item.subregion}"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/small_text_size"
+                            app:visibility="@{item.subregion != null}"
+                            tools:text="Southern Europe" />
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -137,9 +156,11 @@
                     android:includeFontPadding="false"
                     android:padding="4dp"
                     android:singleLine="true"
+                    android:text="@{UtilKt.concatStrings(item.capitals)}"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/text_size"
                     app:drawableStartCompat="@drawable/ic_circle_location"
+                    app:visibility="@{item.capitals != null &amp;&amp;item.capitals.size > 0}"
                     tools:text="Rome" />
 
                 <TextView
@@ -156,6 +177,7 @@
                     android:paddingStart="4dp"
                     android:paddingEnd="0dp"
                     android:singleLine="true"
+                    android:text="@{UtilKt.numberFormatter(item.population)}"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/medium_text_size"
                     app:drawableStartCompat="@drawable/ic_people"

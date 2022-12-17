@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.DiffUtil
 import com.daniel.raduca.countryflags.model.Country
 import com.daniel.raduca.countryflags.network.CountriesApi
 import kotlinx.coroutines.launch
@@ -15,7 +16,7 @@ class CountriesViewModel : ViewModel() {
     private val _status = MutableLiveData<CountriesApiStatus>()
     val status: LiveData<CountriesApiStatus> = _status
 
-    private val _countries = MutableLiveData<List<Country>>()
+    private val _countries = MutableLiveData<List<Country>>(listOf())
     val countries: LiveData<List<Country>> = _countries
 
     init {
@@ -32,6 +33,16 @@ class CountriesViewModel : ViewModel() {
                 _status.value = CountriesApiStatus.ERROR
                 _countries.value = listOf()
             }
+        }
+    }
+
+    companion object DiffCallback : DiffUtil.ItemCallback<Country>() {
+        override fun areItemsTheSame(oldItem: Country, newItem: Country): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: Country, newItem: Country): Boolean {
+            return oldItem == newItem
         }
     }
 }

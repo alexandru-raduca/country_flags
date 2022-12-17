@@ -1,38 +1,47 @@
 package com.daniel.raduca.countryflags.adapters
 
+import android.provider.ContactsContract.Data
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-interface BindingInterface<T : Any> {
+interface BindingHandler<T : Any> {
     fun bindData(item: T, view: View)
 }
 
 class GenericAdapter<T : Any>(
-    private val data: List<T>, @LayoutRes val layoutId: Int,
-    private val bindingInterface: BindingInterface<T>
+    @LayoutRes val layoutId: Int,
+    private val bindingHandler: BindingHandler<T>,
+    diffCallback: DiffUtil.ItemCallback<T>
 
-) : RecyclerView.Adapter<GenericAdapter.ViewHolder>() {
+) : ListAdapter<T, GenericAdapter.ViewHolder>(diffCallback) {
 
     class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun <T : Any> bind(
             item: T,
-            bindingInterface: BindingInterface<T>
-        ) = bindingInterface.bindData(item, view)
+            bindingHandler: BindingHandler<T>
+        ) = bindingHandler.bindData(item, view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(layoutId, parent, false)
-        return ViewHolder(view)
+        val binding: ViewDataBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            layoutId,
+            parent,
+            false
+        )
+
+        return ViewHolder(binding.root)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
-        holder.bind(item, bindingInterface)
+        val item = getItem(position)
+        holder.bind(item, bindingHandler)
     }
-
-    override fun getItemCount(): Int = data.size
 }
