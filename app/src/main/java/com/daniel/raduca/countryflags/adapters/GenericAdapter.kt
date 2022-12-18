@@ -1,6 +1,5 @@
 package com.daniel.raduca.countryflags.adapters
 
-import android.provider.ContactsContract.Data
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,6 @@ class GenericAdapter<T : Any>(
     @LayoutRes val layoutId: Int,
     private val bindingHandler: BindingHandler<T>,
     diffCallback: DiffUtil.ItemCallback<T>
-
 ) : ListAdapter<T, GenericAdapter.ViewHolder>(diffCallback) {
 
     class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {

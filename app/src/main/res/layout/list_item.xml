@@ -13,6 +13,7 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -32,7 +33,7 @@
                 android:contentDescription="@string/flag"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{item.flags.png}"
-                android:background="@color/text_color"
+                android:background="@color/text_color_white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +61,7 @@
                     android:paddingHorizontal="4dp"
                     android:paddingTop="4dp"
                     android:text="@{item.name.common}"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/text_color_white"
                     android:textSize="@dimen/title_size"
                     tools:text="Italy" />
 
@@ -73,7 +74,7 @@
                     android:paddingHorizontal="4dp"
                     android:paddingBottom="4dp"
                     android:text="@{item.name.official}"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/text_color_white"
                     android:textSize="@dimen/medium_text_size"
                     tools:text="Italian Republic" />
 
@@ -125,7 +126,7 @@
                             android:includeFontPadding="false"
                             android:singleLine="true"
                             android:text="@{item.region}"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/text_color_white"
                             android:textSize="@dimen/text_size"
                             tools:text="Europe" />
 
@@ -139,11 +140,10 @@
                             android:includeFontPadding="false"
                             android:singleLine="true"
                             android:text="@{item.subregion}"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/text_color_white"
                             android:textSize="@dimen/small_text_size"
                             app:visibility="@{item.subregion != null}"
                             tools:text="Southern Europe" />
-
 
                     </LinearLayout>
 
@@ -162,7 +162,7 @@
                     android:padding="4dp"
                     android:singleLine="true"
                     android:text="@{UtilKt.concatStrings(item.capitals)}"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/text_color_white"
                     android:textSize="@dimen/text_size"
                     app:drawableStartCompat="@drawable/ic_circle_location"
                     app:visibility="@{item.capitals != null &amp;&amp;item.capitals.size > 0}"
@@ -183,7 +183,7 @@
                     android:paddingEnd="0dp"
                     android:singleLine="true"
                     android:text="@{UtilKt.numberFormatter(item.population)}"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/text_color_white"
                     android:textSize="@dimen/medium_text_size"
                     app:drawableStartCompat="@drawable/ic_people"
                     tools:text="59.554.023" />

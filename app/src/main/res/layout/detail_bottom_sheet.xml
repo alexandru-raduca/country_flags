@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.daniel.raduca.countryflags.model.Country" />
+
+        <import type="com.daniel.raduca.countryflags.util.UtilKt" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/standard_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="24dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+<!--                            <androidx.fragment.app.FragmentContainerView-->
+<!--                                xmlns:tools="http://schemas.android.com/tools"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:id="@+id/map"-->
+<!--                                tools:context=".MapsActivity"-->
+<!--                                android:name="com.google.android.gms.maps.SupportMapFragment" />-->
+            <!--TODO: show map instead of a placeholder-->
+            <ImageView
+                android:id="@+id/background"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="@color/text_color_white"
+                android:contentDescription="@string/map"
+                android:scaleType="centerCrop"
+                android:src="@drawable/round_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/round_background" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="16dp"
+                android:weightSum="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/name"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="@dimen/small_text_size"
+                        tools:text="Name" />
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="@dimen/text_size"
+                        tools:text="Italy" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/official_name"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="@dimen/small_text_size"
+                        tools:text="Official name" />
+
+                    <TextView
+                        android:id="@+id/official_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="@dimen/text_size"
+                        tools:text="Europe" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:paddingTop="16dp"-->
+<!--                android:weightSum="2"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:ellipsize="end"-->
+<!--                        android:fontFamily="@font/roboto"-->
+<!--                        android:includeFontPadding="false"-->
+<!--                        android:singleLine="true"-->
+<!--                        android:text="@string/native_name"-->
+<!--                        android:textColor="@color/text_color_grey"-->
+<!--                        android:textSize="@dimen/medium_text_size"-->
+<!--                        app:visibility="@{item.subregion != null}"-->
+<!--                        tools:text="Native name" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:ellipsize="end"-->
+<!--                        android:fontFamily="@font/roboto"-->
+<!--                        android:includeFontPadding="false"-->
+<!--                        android:singleLine="true"-->
+<!--                        android:text="@{item.name.nativeName}"-->
+<!--                        android:textColor="@color/text_color_grey"-->
+<!--                        android:textSize="@dimen/subtitle_size"-->
+<!--                        tools:text="Italy" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:ellipsize="end"-->
+<!--                        android:fontFamily="@font/roboto"-->
+<!--                        android:includeFontPadding="false"-->
+<!--                        android:singleLine="true"-->
+<!--                        android:text="@{item.subregion}"-->
+<!--                        android:textColor="@color/text_color_grey"-->
+<!--                        android:textSize="@dimen/medium_text_size"-->
+<!--                        app:visibility="@{item.subregion != null}"-->
+<!--                        tools:text="Official native name" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:ellipsize="end"-->
+<!--                        android:fontFamily="@font/roboto"-->
+<!--                        android:includeFontPadding="false"-->
+<!--                        android:singleLine="true"-->
+<!--                        android:text="@{item.region}"-->
+<!--                        android:textColor="@color/text_color_grey"-->
+<!--                        android:textSize="@dimen/subtitle_size"-->
+<!--                        tools:text="Europe" />-->
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>

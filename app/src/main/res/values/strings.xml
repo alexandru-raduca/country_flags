@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Country Flags</string>
     <string name="flag">country flag</string>
+    <string name="map">country map</string>
     <string name="loading_data_error_message">No countries yet? Check your internet connection.</string>
+    <string name="name">Name</string>
+    <string name="official_name">Official name</string>
+    <string name="native_name">Native name</string>
 </resources>
