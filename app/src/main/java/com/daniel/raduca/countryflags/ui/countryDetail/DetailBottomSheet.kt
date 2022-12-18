@@ -20,6 +20,8 @@ class DetailBottomSheet : BottomSheetDialogFragment() {
         // TODO: UGLY!!! get only the id and query the db for all the data. da fare ASAP!!!
         binding.name.text = args?.getString("name")
         binding.officialName.text = args?.getString("officialName")
+        binding.capitals.text = args?.getString("capitals")
+        binding.population.text = args?.getString("population")
 
         return binding.root
     }

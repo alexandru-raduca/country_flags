@@ -10,13 +10,12 @@ import androidx.fragment.app.viewModels
 import com.daniel.raduca.countryflags.R
 import com.daniel.raduca.countryflags.adapters.BindingHandler
 import com.daniel.raduca.countryflags.adapters.GenericAdapter
-import com.daniel.raduca.countryflags.databinding.DetailBottomSheetBinding
 import com.daniel.raduca.countryflags.databinding.FragmentCountriesBinding
 import com.daniel.raduca.countryflags.databinding.ListItemBinding
 import com.daniel.raduca.countryflags.model.Country
 import com.daniel.raduca.countryflags.ui.countryDetail.DetailBottomSheet
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import kotlinx.coroutines.NonDisposableHandle.parent
+import com.daniel.raduca.countryflags.util.concatStrings
+import com.daniel.raduca.countryflags.util.numberFormatter
 
 class CountriesFragment : Fragment(), BindingHandler<Country> {
     private val viewModel: CountriesViewModel by viewModels()
@@ -52,6 +51,10 @@ class CountriesFragment : Fragment(), BindingHandler<Country> {
                 val args = Bundle()
                 args.putString("name", item.name?.common)
                 args.putString("officialName", item.name?.official)
+                args.putString("capitals", concatStrings(item.capitals))
+                args.putString(
+                    "population",
+                    item.population?.let { population -> numberFormatter(population) })
 
                 bottomSheet.arguments = args
                 bottomSheet.show(parentFragmentManager, DetailBottomSheet.TAG)

@@ -37,12 +37,14 @@
                 android:layout_height="140dp"
                 android:background="@color/text_color_white"
                 android:contentDescription="@string/map"
-                android:scaleType="centerCrop"
-                android:src="@drawable/round_background"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_location_on"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/round_background" />
+                tools:src="@drawable/ic_location_on"
+                android:backgroundTint="@color/transparent_background"
+                app:tint="@color/text_color_grey" />
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -56,7 +58,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/background">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
@@ -71,7 +73,7 @@
                         android:text="@string/name"
                         android:textColor="@color/text_color_grey"
                         android:textSize="@dimen/small_text_size"
-                        tools:text="Name" />
+                        tools:text="@string/name" />
 
                     <TextView
                         android:id="@+id/name"
@@ -86,7 +88,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
@@ -101,7 +103,7 @@
                         android:text="@string/official_name"
                         android:textColor="@color/text_color_grey"
                         android:textSize="@dimen/small_text_size"
-                        tools:text="Official name" />
+                        tools:text="@string/official_name" />
 
                     <TextView
                         android:id="@+id/official_name"
@@ -117,81 +119,78 @@
 
             </LinearLayout>
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:paddingTop="16dp"-->
-<!--                android:weightSum="2"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">-->
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="16dp"
+                android:weightSum="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:orientation="vertical">-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:ellipsize="end"-->
-<!--                        android:fontFamily="@font/roboto"-->
-<!--                        android:includeFontPadding="false"-->
-<!--                        android:singleLine="true"-->
-<!--                        android:text="@string/native_name"-->
-<!--                        android:textColor="@color/text_color_grey"-->
-<!--                        android:textSize="@dimen/medium_text_size"-->
-<!--                        app:visibility="@{item.subregion != null}"-->
-<!--                        tools:text="Native name" />-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/capital"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="@dimen/small_text_size"
+                        tools:text="@string/capital" />
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:ellipsize="end"-->
-<!--                        android:fontFamily="@font/roboto"-->
-<!--                        android:includeFontPadding="false"-->
-<!--                        android:singleLine="true"-->
-<!--                        android:text="@{item.name.nativeName}"-->
-<!--                        android:textColor="@color/text_color_grey"-->
-<!--                        android:textSize="@dimen/subtitle_size"-->
-<!--                        tools:text="Italy" />-->
-<!--                </LinearLayout>-->
+                    <TextView
+                        android:id="@+id/capitals"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="@dimen/text_size"
+                        tools:text="Italy" />
+                </LinearLayout>
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:orientation="vertical">-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:ellipsize="end"-->
-<!--                        android:fontFamily="@font/roboto"-->
-<!--                        android:includeFontPadding="false"-->
-<!--                        android:singleLine="true"-->
-<!--                        android:text="@{item.subregion}"-->
-<!--                        android:textColor="@color/text_color_grey"-->
-<!--                        android:textSize="@dimen/medium_text_size"-->
-<!--                        app:visibility="@{item.subregion != null}"-->
-<!--                        tools:text="Official native name" />-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/population"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="@dimen/small_text_size"
+                        tools:text="@string/population"/>
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:ellipsize="end"-->
-<!--                        android:fontFamily="@font/roboto"-->
-<!--                        android:includeFontPadding="false"-->
-<!--                        android:singleLine="true"-->
-<!--                        android:text="@{item.region}"-->
-<!--                        android:textColor="@color/text_color_grey"-->
-<!--                        android:textSize="@dimen/subtitle_size"-->
-<!--                        tools:text="Europe" />-->
-<!--                </LinearLayout>-->
+                    <TextView
+                        android:id="@+id/population"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="@dimen/text_size"
+                        tools:text="123.456.789" />
+                </LinearLayout>
 
-<!--            </LinearLayout>-->
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

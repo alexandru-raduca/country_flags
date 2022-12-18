@@ -6,4 +6,6 @@
     <string name="name">Name</string>
     <string name="official_name">Official name</string>
     <string name="native_name">Native name</string>
+    <string name="capital">Capital</string>
+    <string name="population">Population</string>
 </resources>
